@@ -1,0 +1,38 @@
+{
+  "name": "canvas-dither",
+  "version": "1.0.0",
+  "description": "Black and White dithering for the canvas element",
+  "main": "src/canvas-dither.js",
+  "scripts": {
+    "bundle": "browserify src/canvas-dither.js --standalone CanvasDither -o dist/canvas-dither.js",
+    "uglify": "uglifyjs dist/canvas-dither.js -cm --overwrite -o dist/canvas-dither.js",
+    "build": "npm run bundle && npm run uglify",
+    "lint": "eslint --fix src/canvas-dither.js",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NielsLeenheer/CanvasDither.git"
+  },
+  "keywords": [
+    "dithering",
+    "dither",
+    "canvas",
+    "bw",
+    "black",
+    "white",
+    "1 bit"
+  ],
+  "author": "Niels Leenheer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NielsLeenheer/CanvasDither/issues"
+  },
+  "homepage": "https://github.com/NielsLeenheer/CanvasDither#readme",
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "eslint": "^4.11.0",
+    "eslint-config-google": "^0.9.1",
+    "uglify-es": "^3.1.10"
+  }
+}

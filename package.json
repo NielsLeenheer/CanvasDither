@@ -1,6 +1,6 @@
 {
   "name": "canvas-dither",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Black and White dithering for the canvas element",
   "main": "src/canvas-dither.js",
   "scripts": {
@@ -30,9 +30,9 @@
   },
   "homepage": "https://github.com/NielsLeenheer/CanvasDither#readme",
   "devDependencies": {
-    "browserify": "^14.5.0",
-    "eslint": "^4.11.0",
-    "eslint-config-google": "^0.9.1",
-    "uglify-es": "^3.1.10"
+    "browserify": "^16.5.2",
+    "eslint": "^7.7.0",
+    "eslint-config-google": "^0.14.0",
+    "uglify-es": "^3.3.9"
   }
 }

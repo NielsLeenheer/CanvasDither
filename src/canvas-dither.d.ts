@@ -7,43 +7,43 @@ declare class CanvasDither {
     /**
        * Change the image to grayscale
        *
-       * @param  {object}   image         The imageData of a Canvas 2d context
-       * @return {object}                 The resulting imageData
+       * @param  {ImageData}   image         The imageData of a Canvas 2d context
+       * @return {ImageData}                 The resulting imageData
        *
        */
-    grayscale(image: object): object;
+    grayscale(image: ImageData): ImageData;
     /**
        * Change the image to blank and white using a simple threshold
        *
-       * @param  {object}   image         The imageData of a Canvas 2d context
+       * @param  {ImageData}   image         The imageData of a Canvas 2d context
        * @param  {number}   threshold     Threshold value (0-255)
-       * @return {object}                 The resulting imageData
+       * @return {ImageData}                 The resulting imageData
        *
        */
-    threshold(image: object, threshold: number): object;
+    threshold(image: ImageData, threshold: number): ImageData;
     /**
        * Change the image to blank and white using the Bayer algorithm
        *
-       * @param  {object}   image         The imageData of a Canvas 2d context
+       * @param  {ImageData}   image         The imageData of a Canvas 2d context
        * @param  {number}   threshold     Threshold value (0-255)
-       * @return {object}                 The resulting imageData
+       * @return {ImageData}                 The resulting imageData
        *
        */
-    bayer(image: object, threshold: number): object;
+    bayer(image: ImageData, threshold: number): ImageData;
     /**
        * Change the image to blank and white using the Floyd-Steinberg algorithm
        *
-       * @param  {object}   image         The imageData of a Canvas 2d context
-       * @return {object}                 The resulting imageData
+       * @param  {ImageData}   image         The imageData of a Canvas 2d context
+       * @return {ImageData}                 The resulting imageData
        *
        */
-    floydsteinberg(image: object): object;
+    floydsteinberg(image: ImageData): ImageData;
     /**
        * Change the image to blank and white using the Atkinson algorithm
        *
-       * @param  {object}   image         The imageData of a Canvas 2d context
-       * @return {object}                 The resulting imageData
+       * @param  {ImageData}   image         The imageData of a Canvas 2d context
+       * @return {ImageData}                 The resulting imageData
        *
        */
-    atkinson(image: object): object;
+    atkinson(image: ImageData): ImageData;
 }

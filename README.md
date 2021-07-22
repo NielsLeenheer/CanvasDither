@@ -39,7 +39,7 @@ Altough there is nothing random about this algorithm, the results looks like a r
 
     Dither.floydsteinberg(imageData);
 
-### Bill Atikinson
+### Bill Atkinson
 An improved version of the Floyd-Steinberg algorithm created by Bill Atkinson of MacPaint fame. This algorithm creates less noise in almost white backgrounds compared to Floyd-Steinberg, but has more contrast as a result.
 
     Dither.atkinson(imageData);

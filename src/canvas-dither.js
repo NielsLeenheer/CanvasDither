@@ -125,6 +125,207 @@ class CanvasDither {
 
     return image;
   }
+
+  /**
+     * Change the image to black and white using the Stucki algorithm
+     *
+     * @param  {object}   image         The imageData of a Canvas 2d context
+     * @return {object}                 The resulting imageData
+     *
+     */
+  stucki(image) {
+    const width = image.width;
+    const luminance = new Uint8ClampedArray(image.width * image.height);
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      luminance[l] = (image.data[i] * 0.299) + (image.data[i + 1] * 0.587) + (image.data[i + 2] * 0.114);
+    }
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      const value = luminance[l] < 129 ? 0 : 255;
+      const error = Math.floor((luminance[l] - value) / 42);
+      image.data.fill(value, i, i + 3);
+
+      luminance[l + 1] += error * 8;
+      luminance[l + 2] += error * 4;
+      luminance[l + width - 2] += error * 2;
+      luminance[l + width - 1] += error * 4;
+      luminance[l + width] += error * 8;
+      luminance[l + width + 1] += error * 4;
+      luminance[l + width + 2] += error * 2;
+      luminance[l + 2 * width - 2] += error * 1;
+      luminance[l + 2 * width - 1] += error * 2;
+      luminance[l + 2 * width] += error * 4;
+      luminance[l + 2 * width + 1] += error * 2;
+      luminance[l + 2 * width + 2] += error * 1;
+    }
+
+    return image;
+  }
+
+  /**
+     * Change the image to black and white using the Burkes algorithm
+     *
+     * @param  {object}   image         The imageData of a Canvas 2d context
+     * @return {object}                 The resulting imageData
+     *
+     */
+  burkes(image) {
+    const width = image.width;
+    const luminance = new Uint8ClampedArray(image.width * image.height);
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      luminance[l] = (image.data[i] * 0.299) + (image.data[i + 1] * 0.587) + (image.data[i + 2] * 0.114);
+    }
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      const value = luminance[l] < 129 ? 0 : 255;
+      const error = Math.floor((luminance[l] - value) / 32);
+      image.data.fill(value, i, i + 3);
+
+      luminance[l + 1] += error * 8;
+      luminance[l + 2] += error * 4;
+      luminance[l + width - 2] += error * 2;
+      luminance[l + width - 1] += error * 4;
+      luminance[l + width] += error * 8;
+      luminance[l + width + 1] += error * 4;
+      luminance[l + width + 2] += error * 2;
+    }
+
+    return image;
+  }
+
+  /**
+     * Change the image to black and white using the Jarvis-Judice-Ninke algorithm
+     *
+     * @param  {object}   image         The imageData of a Canvas 2d context
+     * @return {object}                 The resulting imageData
+     *
+     */
+  jarvisjudiceninke(image) {
+    const width = image.width;
+    const luminance = new Uint8ClampedArray(image.width * image.height);
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      luminance[l] = (image.data[i] * 0.299) + (image.data[i + 1] * 0.587) + (image.data[i + 2] * 0.114);
+    }
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      const value = luminance[l] < 129 ? 0 : 255;
+      const error = Math.floor((luminance[l] - value) / 48);
+      image.data.fill(value, i, i + 3);
+
+      luminance[l + 1] += error * 7;
+      luminance[l + 2] += error * 5;
+      luminance[l + width - 2] += error * 3;
+      luminance[l + width - 1] += error * 5;
+      luminance[l + width] += error * 7;
+      luminance[l + width + 1] += error * 5;
+      luminance[l + width + 2] += error * 3;
+      luminance[l + 2 * width - 2] += error * 1;
+      luminance[l + 2 * width - 1] += error * 3;
+      luminance[l + 2 * width] += error * 5;
+      luminance[l + 2 * width + 1] += error * 3;
+      luminance[l + 2 * width + 2] += error * 1;
+    }
+
+    return image;
+  }
+
+  /**
+     * Change the image to black and white using the Sierra algorithm (Sierra-3)
+     *
+     * @param  {object}   image         The imageData of a Canvas 2d context
+     * @return {object}                 The resulting imageData
+     *
+     */
+  sierra(image) {
+    const width = image.width;
+    const luminance = new Uint8ClampedArray(image.width * image.height);
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      luminance[l] = (image.data[i] * 0.299) + (image.data[i + 1] * 0.587) + (image.data[i + 2] * 0.114);
+    }
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      const value = luminance[l] < 129 ? 0 : 255;
+      const error = Math.floor((luminance[l] - value) / 32);
+      image.data.fill(value, i, i + 3);
+
+      luminance[l + 1] += error * 5;
+      luminance[l + 2] += error * 3;
+      luminance[l + width - 2] += error * 2;
+      luminance[l + width - 1] += error * 4;
+      luminance[l + width] += error * 5;
+      luminance[l + width + 1] += error * 4;
+      luminance[l + width + 2] += error * 2;
+      luminance[l + 2 * width - 1] += error * 2;
+      luminance[l + 2 * width] += error * 3;
+      luminance[l + 2 * width + 1] += error * 2;
+    }
+
+    return image;
+  }
+
+  /**
+     * Change the image to black and white using the Two-row Sierra algorithm
+     *
+     * @param  {object}   image         The imageData of a Canvas 2d context
+     * @return {object}                 The resulting imageData
+     *
+     */
+  sierra2(image) {
+    const width = image.width;
+    const luminance = new Uint8ClampedArray(image.width * image.height);
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      luminance[l] = (image.data[i] * 0.299) + (image.data[i + 1] * 0.587) + (image.data[i + 2] * 0.114);
+    }
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      const value = luminance[l] < 129 ? 0 : 255;
+      const error = Math.floor((luminance[l] - value) / 16);
+      image.data.fill(value, i, i + 3);
+
+      luminance[l + 1] += error * 4;
+      luminance[l + 2] += error * 3;
+      luminance[l + width - 2] += error * 1;
+      luminance[l + width - 1] += error * 2;
+      luminance[l + width] += error * 3;
+      luminance[l + width + 1] += error * 2;
+      luminance[l + width + 2] += error * 1;
+    }
+
+    return image;
+  }
+
+  /**
+     * Change the image to black and white using the Sierra Lite algorithm
+     *
+     * @param  {object}   image         The imageData of a Canvas 2d context
+     * @return {object}                 The resulting imageData
+     *
+     */
+  sierralite(image) {
+    const width = image.width;
+    const luminance = new Uint8ClampedArray(image.width * image.height);
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      luminance[l] = (image.data[i] * 0.299) + (image.data[i + 1] * 0.587) + (image.data[i + 2] * 0.114);
+    }
+
+    for (let l = 0, i = 0; i < image.data.length; l++, i += 4) {
+      const value = luminance[l] < 129 ? 0 : 255;
+      const error = Math.floor((luminance[l] - value) / 4);
+      image.data.fill(value, i, i + 3);
+
+      luminance[l + 1] += error * 2;
+      luminance[l + width - 1] += error * 1;
+      luminance[l + width] += error * 1;
+    }
+
+    return image;
+  }
 }
 
 module.exports = new CanvasDither();

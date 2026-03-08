@@ -44,6 +44,36 @@ An improved version of the Floyd-Steinberg algorithm created by Bill Atkinson of
 
     Dither.atkinson(imageData);
 
+### Stucki
+An error diffusion algorithm by Peter Stucki that distributes quantization error across a wider area (12 neighboring pixels over 3 rows), producing smoother gradients than Floyd-Steinberg.
+
+    Dither.stucki(imageData);
+
+### Burkes
+A simplified version of the Stucki algorithm by Daniel Burkes that uses only 2 rows instead of 3, offering a good balance between quality and performance.
+
+    Dither.burkes(imageData);
+
+### Jarvis, Judice, and Ninke
+An error diffusion algorithm that distributes error across 12 neighboring pixels over 3 rows, similar to Stucki but with different weights. Produces high quality results with smooth tonal transitions.
+
+    Dither.jarvisjudiceninke(imageData);
+
+### Sierra
+The full Sierra algorithm (Sierra-3) distributes error across 10 neighboring pixels over 3 rows. Produces results comparable to Jarvis-Judice-Ninke but with slightly less computational cost.
+
+    Dither.sierra(imageData);
+
+### Two-row Sierra
+A reduced version of the Sierra algorithm that uses only 2 rows, offering faster processing with results similar to Floyd-Steinberg.
+
+    Dither.sierra2(imageData);
+
+### Sierra Lite
+The lightest variant of the Sierra family, distributing error to only 3 neighboring pixels. Very fast while still producing acceptable dithering results.
+
+    Dither.sierralite(imageData);
+
 
 ## License
 
